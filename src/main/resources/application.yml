@@ -29,14 +29,14 @@ spring:
 debug: true
 
 guang:
-  fei: 广菲菲
+  fei: 广飞飞
 
 person:
   age:  33岁
-  nickName:  爱广菲的超超
+  nickName:  爱广飞飞的超超
   schools:
     - 青龙中学
-    - 圣泉中学
+    - 合肥一中
     - 铜陵学院
 
 pagehelper:
