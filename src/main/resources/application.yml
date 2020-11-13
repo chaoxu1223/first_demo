@@ -29,7 +29,7 @@ spring:
 debug: true
 
 guang:
-  fei: 广菲
+  fei: 广菲菲
 
 person:
   age:  33岁
