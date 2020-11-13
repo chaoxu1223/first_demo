@@ -1,0 +1,12 @@
+server:
+  port: 6001
+  context-path: /xuchao
+
+spring:
+  profiles:
+    active: pro
+
+
+
+
+
