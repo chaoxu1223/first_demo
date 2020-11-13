@@ -112,7 +112,7 @@ public class LoginController{
 
         LocalDateTime now1 = LocalDateTime.now();
         System.out.println("~~~~~~~~~~~~~~~~~now1="+now1);
-
+        System.out.println("1111111111111111111111111111111");
         ZoneId zoneId =ZoneId.of("Asia/Shanghai");
         System.out.println("~~~~~~~~~~~~~~~~~now2="+zoneId);
         LocalDateTime now2 = LocalDateTime.now();
