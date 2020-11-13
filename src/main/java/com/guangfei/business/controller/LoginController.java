@@ -110,6 +110,7 @@ public class LoginController{
         String format2 = dateFormat.format(date);
         System.out.println("~~~~~~~~~~~~~~~~~format2="+format2);
 
+        System.out.println("0000000000000000000");
         LocalDateTime now1 = LocalDateTime.now();
         System.out.println("~~~~~~~~~~~~~~~~~now1="+now1);
         ZoneId zoneId =ZoneId.of("Asia/Shanghai");
