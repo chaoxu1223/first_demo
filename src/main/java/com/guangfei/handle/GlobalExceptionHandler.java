@@ -1,15 +1,20 @@
 package com.guangfei.handle;
 
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
+
+import java.util.HashMap;
+import java.util.List;
 
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+    private static HashMap<String,String> map=new HashMap();
 
     /**-------- 通用异常处理方法 --------**/
     @ExceptionHandler(Exception.class)
@@ -27,16 +32,26 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(HttpClientErrorException.class)
-    public Result error(IndexOutOfBoundsException e) {
+    public Result error(HttpClientErrorException e) {
         e.printStackTrace();
         return Result.setResult(ResultCodeEnum.HTTP_CLIENT_ERROR);
     }
 
-    /**-------- 自定义定异常处理方法 --------**/
-    @ExceptionHandler(CMSException.class)
-    public Result error(CMSException e) {
+    @ExceptionHandler(IndexOutOfBoundsException.class)
+    public Result error(IndexOutOfBoundsException e) {
         e.printStackTrace();
-        log.error(ExceptionUtil.getMessage(e));
-        return Result.error().message(e.getMessage()).code(e.getCode());
+        return Result.setResult(ResultCodeEnum.INDEX_OUTOF_BOUNDS_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Result error(MethodArgumentNotValidException e) {
+        BindingResult bindingResult = e.getBindingResult();
+        List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+        fieldErrors.stream().forEach(s->{
+            String field = s.getField();
+            String defaultMessage = s.getDefaultMessage();
+            map.put(field,defaultMessage);
+        });
+            return Result.ok().message("出现了错误信息").data("map",map);
     }
 }

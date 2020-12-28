@@ -1,21 +1,10 @@
 package com.guangfei.business.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.guangfei.business.entity.Party;
 import com.guangfei.business.service.LoginService;
-import com.guangfei.common.RedisUtil;
 import com.guangfei.handle.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.Md5Crypt;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -23,44 +12,17 @@ import org.springframework.web.bind.annotation.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 
 @RestController
 @RequestMapping("/user")
-@Api(tags="登录接口")
 @Slf4j
 public class LoginController{
 
     @Autowired
-    private RedisUtil redisUtil;
-
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
-
-    @Autowired
     private LoginService loginService;
 
-    @ApiOperation(value = "登录")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "username", value = "用户名", defaultValue = "xuchao", required = true),
-            @ApiImplicitParam(name = "password", value = "密码", defaultValue = "guangfei", required = true)
-    })
-    @PostMapping("/login")
-    public String login(String username, String password){
-        ArrayList<Object> arrayList = new ArrayList<>();
-        HashMap<Object, Object> map = new HashMap<>();
-        return "success";
-    }
-
-    @ApiOperation(value = "修改密码")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "username", value = "用户名", defaultValue = "xuchao", required = true),
-            @ApiImplicitParam(name = "oldPwd", value = "密码", defaultValue = "guangfei", required = true),
-            @ApiImplicitParam(name = "newPwd", value = "密码", defaultValue = "guangfei", required = true)
-    })
     @PostMapping("/updatePwd")
     public Result updatePwd(String username, String oldPwd,String newPwd){
         /*
@@ -83,8 +45,6 @@ public class LoginController{
         return Result.error().message("修改密码失败");
     }
 
-
-    @ApiOperation(value = "测试MD5加密")
     @PostMapping("/testMd5")
     public Result testMd5(String testStr,String salt) {
         String str1 = Md5Crypt.apr1Crypt(testStr.getBytes(), salt);
@@ -94,8 +54,6 @@ public class LoginController{
         return Result.ok().message("I am back");
     }
 
-
-    @ApiOperation(value = "获取当前时间")
     @PostMapping("/getCurrentTime")
     public void getCurrentTime() {
         long timeMillis = System.currentTimeMillis();
@@ -114,7 +72,5 @@ public class LoginController{
         System.out.println("~~~~~~~~~~~~~~~~~now1="+now1);
         ZoneId zoneId =ZoneId.of("Asia/Shanghai");
         System.out.println("~~~~~~~~~~~~~~~~~now2="+zoneId);
-        LocalDateTime now2 = LocalDateTime.now();
-        System.out.println("~~~~~~~~~~~~~~~~~now2="+now2);
     }
 }

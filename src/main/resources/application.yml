@@ -7,38 +7,38 @@ spring:
       url:  jdbc:mysql://localhost:2306/edu_system?useUnicode=true&characterEncoding=UTF-8
       driver-class-name:  com.mysql.jdbc.Driver
 
-  redis:
-    database: 4
-    host: 192.168.25.128
-    port: 6379
-    password:
-    timeout:  5000
-    lettuce:
-      pool:
-      max-active: 200
-      max-wait: -1
-      max-idle: 10
-      min-idle: 0
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-    virtual-host: /
+#  redis:
+#    database: 4
+#    host: 192.168.25.128
+#    port: 6379
+#    password:
+#    timeout:  5000
+#    lettuce:
+#      pool:
+#      max-active: 200
+#      max-wait: -1
+#      max-idle: 10
+#      min-idle: 0
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#    virtual-host: /
 
 debug: true
 
-guang:
-  fei:  广告
+#guang:
+#  fei:  广告
 
-person:
-  age:  25岁
-  nickName:  爱广告的菲菲
-  schools:
-    - 青龙中学1
-    - 庐州高复4
-    - 圣泉中学2
-    - 铜陵学院3
+#person:
+#  age:  25岁
+#  nickName:  爱广告的菲菲
+#  schools:
+#    - 青龙中学1
+#    - 庐州高复4
+#    - 圣泉中学2
+#    - 铜陵学院3
 
 pagehelper:
   helperDialect:  mysql

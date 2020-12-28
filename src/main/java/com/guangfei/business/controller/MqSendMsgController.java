@@ -1,7 +1,6 @@
 package com.guangfei.business.controller;
 
 import com.guangfei.business.entity.Party;
-import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/mq/send")
-@Api(tags="mq发送消息")
 @Slf4j
 public class MqSendMsgController {
     @Autowired

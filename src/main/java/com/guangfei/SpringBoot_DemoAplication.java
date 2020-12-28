@@ -20,7 +20,6 @@ import java.util.concurrent.*;
 @EnableRabbit
 public class SpringBoot_DemoAplication {
     public static void main(String[] args) {
-
         SpringApplication.run(SpringBoot_DemoAplication.class,args);
     }
 

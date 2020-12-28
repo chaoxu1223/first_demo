@@ -1,20 +1,20 @@
 package com.guangfei.business.entity;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
 import java.io.Serializable;
-import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Party implements Serializable {
-    private String id;
+    private Integer id;
     private String leaderName;
     private String partyName;
-    private List<Teacher> teacherList;
+
+    public Party() {
+    }
+
+    public Party(Integer id, String partyName, String leaderName) {
+        this.id = id;
+        this.leaderName = leaderName;
+        this.partyName = partyName;
+    }
 }

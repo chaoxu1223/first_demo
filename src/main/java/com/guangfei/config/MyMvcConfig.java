@@ -13,8 +13,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
     public void addInterceptors(InterceptorRegistry registry) {
           registry.addInterceptor(new MyInterceptor())
                   .addPathPatterns("/**")
-                  .excludePathPatterns("/login.html","/user/login")
-                  .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
+                  .excludePathPatterns("/login.html","/user/login");
     }
 
 }
